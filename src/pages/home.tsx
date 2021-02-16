@@ -35,7 +35,7 @@ const Home = () => {
       {
         categorias !== null &&
         categorias.map((item: string) => (
-          <div key={item}>
+          <div key={item} className="home-categorias">
             <p>{item}</p>
           </div>
         ))
