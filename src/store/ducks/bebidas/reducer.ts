@@ -5,8 +5,6 @@ const initialStateBeer: Beers[] = []
 
 function reducerBeer(state = initialStateBeer, action: any) {
   switch(action.type){
-    case ActionTypes.GET_BEERS:
-      return state
     case ActionTypes.POST_BEERS:
       state.push(action.payload)
       return state

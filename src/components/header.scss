@@ -1,0 +1,19 @@
+.container-header{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.link{
+  text-decoration: none;
+}
+
+.images{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+

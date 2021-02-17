@@ -1,8 +1,6 @@
 import { action } from 'typesafe-actions'
 import { ActionTypes, Beers } from './types'
 
-export const getBeer = (payload: Beers) => action(ActionTypes.GET_BEERS, payload)
-
 export const postBeer = (payload: Beers) => action(ActionTypes.POST_BEERS, payload)
 
 export const deleteBeer = (payload: Beers) => action(ActionTypes.DELETE_BEERS, payload)

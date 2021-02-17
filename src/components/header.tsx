@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import './header.scss'
+
 const Header = () => {
   return (
     <div className="container-header">
-      <div className="container-header images">
-        <div ><Link to="/"><span><img width="70" alt="Logo" src="assets/logo.svg" /></span></Link></div>
-        <div ><Link to="/"><span><img width="100" alt="Logo" src="assets/logo-nome.svg" /></span></Link></div>
+      <div className="images">
+        <Link to="/"><img width="70" alt="Logo" src="assets/logo.svg" /></Link>
+        <Link to="/"><img width="100" alt="Logo" src="assets/logo-nome.svg" /></Link>
       </div>
 
-      <div className="container-header paragrafo">
-        <p>A maior <Link to="/">Loja especializada de Cervejas</Link> do Brasil.</p>
+      <div className="paragrafo">
+        <span>A maior <a href="/" className="link">Loja especializada de Cervejas</a> do Brasil.</span>
       </div>
 
-      <div className="container-header carrinho">
-        <p><Link to="/carrinho">Vazio :(</Link></p>
+      <div className="carrinho">
+        <p><Link to="/carrinho" className="link">Vazio :(</Link></p>
       </div>
     </div>
   )
