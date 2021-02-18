@@ -1,7 +1,6 @@
 import { BebidasI } from "../../../types/typeshome";
 
 export enum ActionTypes {
-  GET_BEERS = 'GET_BEERS',
   POST_BEERS = 'POST_BEERS',
   DELETE_BEERS = 'DELETE_BEERS',
   ADD_BEERS = 'ADD_BEERS',
@@ -9,5 +8,6 @@ export enum ActionTypes {
 }
 
 export interface Beers extends BebidasI {
-  quantidade: number
+  quantidade: number,
+  precoBase: number
 }

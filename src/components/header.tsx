@@ -17,6 +17,7 @@ const Header = () => {
 
       <div className="carrinho">
         <p><Link to="/carrinho" className="link">Vazio :(</Link></p>
+        <span className="quantidade-carrinho active">1</span>
       </div>
     </div>
   )

@@ -30,13 +30,16 @@ const Home = () => {
 
   const buyBeer = (data: BebidasI) => {
 
+    let price = data.price.replace(",",".")
+
     const newBeer = {
       description: data.description,
       id: data.id,
       image: data.image,
-      price: data.price,
+      price: Number(price.replace(/[^0-9.]+/g,"")),
       title: data.title,
-      quantidade: 1
+      quantidade: 1,
+      precoBase: Number(price.replace(/[^0-9.]+/g,""))
     }
 
     dispatch(postBeer(newBeer))

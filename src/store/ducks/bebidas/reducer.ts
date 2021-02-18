@@ -1,38 +1,47 @@
 import { ActionTypes, Beers } from "./types"
 
 
-const initialStateBeer: Beers[] = []
+const initialStateBeer = {
+  arrayBebidas: []
+}
 
 function reducerBeer(state = initialStateBeer, action: any) {
+  const bebidas: any = state.arrayBebidas
   switch(action.type){
     case ActionTypes.POST_BEERS:
-      state.push(action.payload)
-      return state
+      bebidas.push(action.payload)
+      return {
+        arrayBebidas: bebidas
+      }
     case ActionTypes.DELETE_BEERS:
-      state.map((item: Beers, index) => {
+      bebidas.map((item: Beers, index: number) => {
         if(item.id === action.payload.id){
-          state.splice(index, 1)
+          bebidas.splice(index, 1)
         }
       })
-      return state
+      return {
+        arrayBebidas: bebidas
+      }
     case ActionTypes.ADD_BEERS:
-      state.map((item: Beers) => {
+      bebidas.map((item: Beers) => {
         if(item.id === action.payload.id){
           item.quantidade++
+          item.price = item.precoBase * item.quantidade
         }
       })
-      return state
+      return {
+        arrayBebidas: bebidas
+      }
     case ActionTypes.REMOVE_BEERS:
-      state.map((item: Beers, index) => {
+      bebidas.map((item: Beers) => {
         if(item.id === action.payload.id){
-          if(item.quantidade > 0){
-            item.quantidade--
-          } else {
-            state.splice(index, 1)
-          }
+          item.quantidade--
+          item.price = item.precoBase * item.quantidade
         }
       })
-      return state
+      return {
+        arrayBebidas: bebidas
+      }
     default:
       return state
   }
