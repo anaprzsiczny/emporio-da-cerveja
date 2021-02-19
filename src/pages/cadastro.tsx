@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import './cadastro.scss';
+
 const Cadastro = () => {
 
   const inputNome = useRef<HTMLInputElement>(null)
@@ -35,12 +37,12 @@ const Cadastro = () => {
 }
 
   return (
-    <div>
+    <div className="cadastro">
       <input type="text" placeholder="Nome" ref={inputNome}></input>
       <input type="email" placeholder="E-mail" ref={inputEmail}></input>
       <input type="password" placeholder="Senha" ref={inputSenha}></input>
       <input type="number" placeholder="Idade" ref={inputIdade}></input>
-      <button onClick={Cadastrar}>Cadastrar</button>
+      <button onClick={Cadastrar} className="button">Cadastrar</button>
       {
         cadastro === true ?
         <Redirect to="/" />

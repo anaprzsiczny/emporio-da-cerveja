@@ -5,6 +5,8 @@ import { Link, Redirect } from 'react-router-dom';
 import Header from '../components/header';
 import { postBeer } from '../store/ducks/bebidas/actions';
 import { BebidasI } from '../types/typeshome';
+import {FiShoppingCart} from 'react-icons/fi'
+import './home.scss'
 
 const Home = () => {
 
@@ -31,15 +33,17 @@ const Home = () => {
   const buyBeer = (data: BebidasI) => {
 
     let price = data.price.replace(",",".")
+    price = Number(price.replace(/[^0-9.]+/g,""))
+    price = Number(price.toFixed(2))
 
     const newBeer = {
       description: data.description,
       id: data.id,
       image: data.image,
-      price: Number(price.replace(/[^0-9.]+/g,"")),
+      price: price,
       title: data.title,
       quantidade: 1,
-      precoBase: Number(price.replace(/[^0-9.]+/g,""))
+      precoBase: price
     }
 
     dispatch(postBeer(newBeer))
@@ -53,14 +57,17 @@ const Home = () => {
         <Redirect to="/cadastro" />
       }
       
-      {
-        categorias !== null &&
-        categorias.map((item: string) => (
-          <div key={item} className="home-categorias">
-            <p>{item}</p>
-          </div>
-        ))
-      }
+      <div className="home-categorias">
+        {
+          categorias !== null &&
+          categorias.map((item: string) => (
+            <div key={item} className="home-categoria-item">
+              <p>{item}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div className="submenu"></div>
 
       {
         bebidas !== undefined &&
@@ -70,7 +77,7 @@ const Home = () => {
             <img src={item.image} />
             <p>{item.price}</p>
             <p>{item.description}</p>
-            <Link to="/carrinho" onClick={() => buyBeer(item)}>Comprar</Link>
+            <Link to="/carrinho" onClick={() => buyBeer(item)}><FiShoppingCart/>Comprar</Link>
           </div>
         ))
       }

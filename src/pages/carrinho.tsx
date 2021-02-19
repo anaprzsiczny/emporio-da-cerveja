@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/header';
-import { addBeer, deleteBeer, removeBeer } from '../store/ducks/bebidas/actions';
+import { addBeer, deleteBeer, finishOrder, removeBeer } from '../store/ducks/bebidas/actions';
 import { Beers } from '../store/ducks/bebidas/types';
+import {FiTrash2, FiPlus, FiMinus} from 'react-icons/fi'
 
 const Carrinho = () => {
 
@@ -11,8 +12,7 @@ const Carrinho = () => {
 
   const [token] = useState<string | null>(localStorage.getItem("token"))
 
-  const {arrayBebidas} = useSelector((state: any) => state)
-  console.log(arrayBebidas)
+  const {arrayBebidas, precoTotal} = useSelector((state: any) => state)
 
   const adicionar = (data: Beers) => {
     dispatch(addBeer(data))
@@ -26,6 +26,10 @@ const Carrinho = () => {
     dispatch(deleteBeer(data))
   } 
 
+  const finalizar = () => {
+    dispatch(finishOrder())
+    alert('Seu pedido foi realizado!')
+  }
   
   return (
     <>
@@ -42,11 +46,18 @@ const Carrinho = () => {
             <p>{item.title}</p>
             <p>R$ {item.price}</p>
             <p>{item.quantidade}</p>
-            <button onClick={() => adicionar(item)}>+</button>
-            <button onClick={() => remover(item)}>-</button>
-            <button onClick={() => deletar(item)}>Remover</button>
+            <FiPlus onClick={() => adicionar(item)}/>
+            <FiMinus onClick={() => remover(item)}/>
+            <FiTrash2 onClick={() => deletar(item)}/>
           </div>
         ))
+      }
+      {
+        precoTotal !== 0 &&
+        <div>
+          <p>Valor Total: R$ {precoTotal}</p>
+          <button onClick={finalizar}>Finalizar Compra</button>
+        </div>
       }
     </>
   )

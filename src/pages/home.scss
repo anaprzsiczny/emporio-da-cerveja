@@ -1,0 +1,27 @@
+.home-categorias {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 25px;
+  align-content: center;
+}
+
+.home-categoria-item {
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.15;
+  width: 15%;
+}
+
+.submenu {
+  border-top: 4px var(--yellow) solid;
+  width: 100%;
+}

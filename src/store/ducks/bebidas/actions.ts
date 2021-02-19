@@ -8,3 +8,5 @@ export const deleteBeer = (payload: Beers) => action(ActionTypes.DELETE_BEERS, p
 export const addBeer = (payload: Beers) => action(ActionTypes.ADD_BEERS, payload)
 
 export const removeBeer = (payload: Beers) => action(ActionTypes.REMOVE_BEERS, payload)
+
+export const finishOrder = () => action(ActionTypes.FINISH_ORDER)

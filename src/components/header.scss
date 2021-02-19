@@ -7,8 +7,10 @@
   margin-top: 2%;
 }
 
-.link{
+.link-home{
   text-decoration: none;
+  color: var(--black);
+  background-color: var(--yellow);
 }
 
 .images{
@@ -22,6 +24,25 @@
   flex-wrap: nowrap;
   align-items: center;
   width: 15%;
+  justify-content: space-between;
+}
+
+.carrinho-vazio {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: var(--black)
+}
+
+.carrinho-cheio {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: var(--black)
 }
 
 .quantidade-carrinho {
@@ -35,5 +56,18 @@
   width: 9%;
   margin-left: -8%;
   margin-bottom: 15%;
+}
+
+.paragrafo {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+  color: var(--black);
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  background-color: #f0f0f0;
+  height: 30px;
+  padding-top: 8px;
 }
 
