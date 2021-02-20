@@ -25,6 +25,8 @@
   align-items: center;
   width: 15%;
   justify-content: space-between;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
 }
 
 .carrinho-vazio {
@@ -33,7 +35,7 @@
   justify-content: space-between;
   align-items: center;
   text-decoration: none;
-  color: var(--black)
+  color: var(--black);
 }
 
 .carrinho-cheio {
@@ -53,7 +55,7 @@
   background-color: red;
   border-radius: 10px;
   border: red solid 1px;
-  width: 9%;
+  width: 10%;
   margin-left: -8%;
   margin-bottom: 15%;
 }
@@ -66,7 +68,7 @@
   margin: 0;
   text-align: center;
   width: 100%;
-  background-color: #f0f0f0;
+  background-color: var(--light-grey);
   height: 30px;
   padding-top: 8px;
 }

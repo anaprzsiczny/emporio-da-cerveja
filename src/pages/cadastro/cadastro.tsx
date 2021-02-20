@@ -38,6 +38,8 @@ const Cadastro = () => {
 
   return (
     <div className="cadastro">
+      <img width="100" alt="Logo" src="assets/logo-nome.svg" />
+      <br />
       <input type="text" placeholder="Nome" ref={inputNome}></input>
       <input type="email" placeholder="E-mail" ref={inputEmail}></input>
       <input type="password" placeholder="Senha" ref={inputSenha}></input>

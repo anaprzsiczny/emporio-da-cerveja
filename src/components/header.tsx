@@ -31,9 +31,9 @@ const Header = () => {
             : 
             <Link to="/carrinho" className="carrinho-cheio">
               <FiShoppingCart/>
+              <span className="quantidade-carrinho">{quantidadeTotal}</span> 
               <span>R$ {precoTotal}</span>
-            </Link>
-              // {/* <span className="quantidade-carrinho active">{quantidadeTotal}</span> */} 
+            </Link>  
           }
         </div>
       </div>
