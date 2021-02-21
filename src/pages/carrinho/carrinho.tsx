@@ -67,15 +67,15 @@ const Carrinho = () => {
               </div>
             ))
           }
-        </div>
 
-        {
+          {
           precoTotal !== 0 &&
           <div className="finish">
             <p className="final-value">Valor Total: R$ {precoTotal}</p>
             <button onClick={finalizar} className="button-finish">Finalizar Compra</button>
           </div>
-        }
+          }
+        </div>        
 
         <footer className="footer">
           <img width="70" alt="Logo" src="assets/logo.svg" />

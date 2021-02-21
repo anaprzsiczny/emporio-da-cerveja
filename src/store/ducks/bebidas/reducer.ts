@@ -15,7 +15,8 @@ function reducerBeer(state = initialStateBeer, action: any) {
     case ActionTypes.POST_BEERS:
       bebidas.push(action.payload)
       precoTotal += action.payload.price
-      quantidadeTotal += action.payload.quantidade
+      precoTotal = Number(precoTotal.toFixed(2))
+      quantidadeTotal += action.payload.quantidade      
       return {
         arrayBebidas: bebidas,
         precoTotal: precoTotal,
@@ -52,14 +53,17 @@ function reducerBeer(state = initialStateBeer, action: any) {
         quantidadeTotal: quantidadeTotal
       }
     case ActionTypes.REMOVE_BEERS:
-      bebidas.map((item: Beers) => {
+      bebidas.map((item: Beers, index: number) => {
         if(item.id === action.payload.id){
           item.quantidade--
+          quantidadeTotal--
           item.price = item.precoBase * item.quantidade
           item.price = Number(item.price.toFixed(2))
           precoTotal -= item.precoBase
           precoTotal = Number(precoTotal.toFixed(2))
-          quantidadeTotal--
+          if(item.quantidade == 0){
+            bebidas.splice(index, 1)
+          }
         }
       })
       return {

@@ -33,10 +33,10 @@
   font-size: 20px;
   font-weight: 700;
   padding-left: 10px;
-}
 
-.destaques span {
-  padding-left: 5px;
+  span {
+    padding-left: 5px;
+  }
 }
 
 .icon-beer {
@@ -52,12 +52,6 @@
   justify-content: space-around;
 }
 
-.home-cards-item img{
-  width: 100%;
-  height: 176px;
-  max-width: 176px;
-}
-
 .home-cards-item {
   width: 15%;
   border-radius: 8px;
@@ -71,6 +65,12 @@
   font-weight: 400;
   padding-bottom: 10px;
   padding-top: 10px;
+
+  img {
+    width: 100%;
+    height: 176px;
+    max-width: 176px;
+  }
 }
 
 .description {
@@ -99,9 +99,9 @@
   border-radius: 5px;
   align-items: center;
   justify-content: center;
-}
 
-.button-adicionar span {
-  margin-right: 3px;
+  span {
+    margin-right: 3px;
+  }
 }
 

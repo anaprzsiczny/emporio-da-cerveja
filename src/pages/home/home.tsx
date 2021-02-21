@@ -36,6 +36,7 @@ const Home = () => {
     let price = data.price.replace(",",".")
     price = Number(price.replace(/[^0-9.]+/g,""))
     price = Number(price.toFixed(2))
+    console.log(price)
 
     const newBeer = {
       description: data.description,
