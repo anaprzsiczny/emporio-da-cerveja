@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import Header from '../../components/header';
 import { postBeer } from '../../store/ducks/bebidas/actions';
 import { BebidasI } from '../../types/typeshome';
+import toast, { Toaster } from 'react-hot-toast'
 import {FiShoppingCart} from 'react-icons/fi';
 import {IoMdBeer} from 'react-icons/io';
 import './home.scss';
@@ -22,13 +23,33 @@ const Home = () => {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:4000/categories', {headers: headers})
-      .then(resposta => setCategorias(resposta.data))
+    async function getCategories() {
+      try {
+        const data: any = await axios.get('http://localhost:4000/categories', {headers: headers})
+        setCategorias(data.data)
+      } catch(error) {
+        if(error.response.status === 404) {
+          toast.error('Não foi possível carregar as categorias')
+        }
+      }
+    }
+
+    getCategories()
   }, [])
 
   useEffect(() => {
-    axios.get('http://localhost:4000/beers', {headers: headers})
-      .then(resposta => setBebidas(resposta.data))
+    async function getProducts() {
+      try {
+        const data: any = await axios.get('http://localhost:4000/beers', {headers: headers})
+        setBebidas(data.data)
+      } catch(error) {
+        if(error.response.status === 404) {
+          toast.error('Não foi possível carregar os produtos')
+        }
+      }
+    }
+
+    getProducts()
   }, [])
 
   const buyBeer = (data: BebidasI) => {
@@ -54,6 +75,7 @@ const Home = () => {
   return (
     <>
       <Header />
+      <Toaster />
       { 
         !token &&
         <Redirect to="/cadastro" />

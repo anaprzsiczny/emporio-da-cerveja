@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast'
 
 import './cadastro.scss';
 
@@ -13,6 +14,7 @@ const Cadastro = () => {
 
   const [menorDeIdade, setMenorDeIdade] = useState<String>("")
   const [cadastro, setCadastro] = useState<Boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<Boolean>(false)
 
   const Cadastrar = () => {
 
@@ -27,17 +29,31 @@ const Cadastro = () => {
 
     if (idade && idade < "18"){
       setMenorDeIdade("Não é permitido o cadastro de menores de 18 anos!")
-    } else {
-        axios.post('http://localhost:4000/register', requisicao)
-          .then(resposta => { 
-            localStorage.setItem("token", resposta.data.accessToken)
-            setCadastro(true)
-        })
+      return
+    }
+
+    async function registerUser() {
+      try {
+        const data: any = await axios.post('http://localhost:4000/register', requisicao)
+        localStorage.setItem("token", data.data.accessToken)
+        toast.success('Cadastro realizado com sucesso!')
+        setCadastro(true)
+      } catch(error) {
+        if(error.response.status === 404) {
+          setErrorMessage(true)
+          toast.error('Não foi possível completar sua solicitação. Tente novamente.')
+        }
       }
+      
+    }
+
+    registerUser()   
+    
 }
 
   return (
     <div className="cadastro">
+      <Toaster />
       <img width="100" alt="Logo" src="assets/logo-nome.svg" />
       <br />
       <input type="text" placeholder="Nome" ref={inputNome}></input>
@@ -47,7 +63,7 @@ const Cadastro = () => {
       <button onClick={Cadastrar} className="button">Cadastrar</button>
       {
         cadastro === true ?
-        <Redirect to="/" />
+          <Redirect to="/" />
         : <p>{menorDeIdade}</p>
       }
     </div>
